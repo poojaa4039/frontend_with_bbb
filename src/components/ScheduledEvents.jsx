@@ -30,7 +30,11 @@ this.setState({view:1})
     }
 
     JoinAsModerator=(link)=>{
+   
+    if(window.confirm("Are You Sure You want to join now!"))
           window.location=link;
+          else
+          this.setState({view:0})
     }
     render(){
         return(
@@ -40,14 +44,18 @@ this.setState({view:1})
    <tr>
      <th scope="col">Id</th>
      <th scope="col">Event Date</th>
+     <th scope="col">Start Time</th>
+     <th scope="col">End Time</th>
      <th scope="col">Moderator Link</th>  
     
      </tr>
      </thead>
      <tbody >
          {this.state.eventList.map((eventDetail,)=><tr>
-             <td>{eventDetail.id}</td>
-             <td>{eventDetail.date}</td>
+             <td style={{color:"rgb(6, 102, 62)"}}>{eventDetail.id}</td>
+             <td style={{color:"rgb(6, 102, 62)"}}>{eventDetail.date}</td>
+             <td style={{color:"rgb(6, 102, 62)"}}>{eventDetail.start_time}</td>
+             <td style={{color:"rgb(6, 102, 62)"}}>{eventDetail.end_time}</td>
              <td><button className=" btn btn-outline-danger" onClick={()=>this.JoinAsModerator(eventDetail.moderator_link)}>Join As Moderator</button></td>
          </tr>
 
